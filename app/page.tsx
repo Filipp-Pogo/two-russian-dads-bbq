@@ -75,7 +75,7 @@ const faqs = [
   },
   {
     q: "Does the vodka come with the barbecue?",
-    a: "No. Two Russian Dads BBQ does not sell, serve, or provide alcohol. Any client-supplied alcohol is subject to venue rules and applicable law.",
+    a: "No. Bomond is part of Sergey’s separate business story, but Two Russian Dads BBQ does not sell, serve, or provide vodka or any other alcohol. Any client-supplied alcohol is subject to venue rules, permits, and applicable law.",
   },
   {
     q: "What does “Russian” mean in the name?",
@@ -208,6 +208,10 @@ export default function Home() {
               <span className="card-index">02</span>
               <h3>SERGEY<br />SHKREBTAN</h3>
               <p>Table logistics.<br />Portion auditing.<br />Freezer temperature oversight.</p>
+              <div className="sergey-brand-chip">
+                <img src="/bomond-bottle.webp" alt="Bomond Vodka bottle" width={900} height={900} loading="lazy" />
+                <span><small>ALSO ON HIS DESK</small><b>BOMOND VODKA</b></span>
+              </div>
               <span className="status">STATUS: FEEDING PEOPLE</span>
             </article>
             <article className="dad-card title-card">
@@ -241,6 +245,42 @@ export default function Home() {
                 The parody stays where it belongs: layoffs, meetings, spreadsheets, middle-aged reinvention, and two dads taking barbecue extremely seriously. War, displacement, nationality, and ethnicity are never the punchline.
               </p>
             </div>
+          </div>
+        </section>
+
+        <section className="bomond-feature" aria-labelledby="bomond-title">
+          <div className="bomond-gallery" aria-label="Bomond Vodka product photography">
+            <figure className="bomond-photo bomond-photo-red">
+              <img src="/bomond-red.webp" alt="Bomond Vodka bottle photographed in a dramatic red and black studio setting" width={664} height={1000} loading="lazy" />
+            </figure>
+            <figure className="bomond-photo bomond-photo-bottle">
+              <img src="/bomond-bottle.webp" alt="Clear embossed Bomond Vodka bottle on a white background" width={900} height={900} loading="lazy" />
+            </figure>
+            <figure className="bomond-photo bomond-photo-color">
+              <img src="/bomond-color.webp" alt="Bomond Vodka bottle photographed with red, blue, and violet studio lighting" width={664} height={1000} loading="lazy" />
+            </figure>
+          </div>
+
+          <div className="bomond-copy">
+            <p className="section-label light">SERGEY’S OTHER VENTURE</p>
+            <h2 id="bomond-title">A VERY<br />SERIOUS<br /><em>BOTTLE.</em></h2>
+            <p className="bomond-lead">
+              Sergey is also behind Bomond Vodka, a Seattle-area brand made and bottled in France from French wheat and grapes. Apparently one highly controlled process was not enough for this dad.
+            </p>
+            <div className="bomond-facts" aria-label="Bomond Vodka facts">
+              <div><b>6×</b><span>DISTILLED</span></div>
+              <div><b>92</b><span>POINT GOLD · 2018</span></div>
+              <div><b>FR</b><span>MADE &amp; BOTTLED</span></div>
+            </div>
+            <p>
+              The official brand describes Bomond as distilled without additives or enzymes and made with limestone-filtered water. It also received Silver medals at the San Francisco World Spirits Competition in 2017 and 2018.
+            </p>
+            <a className="button bomond-button" href="https://bomondvodka.com/" target="_blank" rel="noreferrer">
+              Visit Bomond Vodka <span aria-hidden="true">↗</span>
+            </a>
+            <p className="bomond-legal">
+              <strong>21+ · Please enjoy responsibly.</strong> Bomond is a separate brand and is not included with catering. Two Russian Dads BBQ does not sell, serve, or provide alcohol.
+            </p>
           </div>
         </section>
 
@@ -358,6 +398,10 @@ export default function Home() {
               <li><b>Custom proposal</b><span>Built around menu, travel, timing, and venue access.</span></li>
               <li><b>Outdoor fire plan</b><span>Charcoal approval and a safe cooking area are required.</span></li>
             </ul>
+            <div className="booking-bomond-note">
+              <img src="/bomond-bottle.webp" alt="Bomond Vodka bottle, shown as part of Sergey’s separate brand story" width={900} height={900} loading="lazy" />
+              <p><b>BOMOND IS SERGEY’S BRAND.</b><span>It is not part of the catering package. Client-supplied alcohol only, where permitted.</span></p>
+            </div>
             <div className="booking-callout">
               <span>THE PROMISE</span>
               <b>NOBODY LEAVES HUNGRY.</b>
@@ -422,8 +466,8 @@ export default function Home() {
           <a href="#top">BACK TO TOP ↑</a>
         </div>
         <div className="footer-bottom">
-          <p>Two Russian Dads BBQ does not sell, serve, or provide alcohol. Any client-supplied alcohol is subject to venue rules and applicable law.</p>
-          <p>Two Russian Dads BBQ is not sponsored by, endorsed by, or affiliated with Adidas or any other tracksuit brand. All temporary imagery uses generic, logo-free retro tracksuits.</p>
+          <p>Two Russian Dads BBQ does not sell, serve, or provide alcohol. Bomond imagery shares Sergey’s separate brand story and is not an offer to include alcohol with catering. Client-supplied alcohol is subject to venue rules, permits, and applicable law.</p>
+          <p>Bomond marks and product photography belong to their respective owner. Two Russian Dads BBQ is not sponsored by, endorsed by, or affiliated with Adidas or any tracksuit brand. Temporary tracksuit imagery is generic and logo-free.</p>
           <p>FAMILY FOOD · NO GOVERNMENT OR POLITICAL AFFILIATION · © {new Date().getFullYear()} TWO RUSSIAN DADS BBQ</p>
         </div>
       </footer>

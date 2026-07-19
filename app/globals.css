@@ -243,6 +243,11 @@ h1 em, h2 em { color: var(--red); font-style: normal; }
 .dad-card h3 { margin: auto 0 25px; font-size: clamp(48px, 5vw, 72px); font-weight: 900; letter-spacing: -.04em; line-height: .78; }
 .dad-card p { font-size: 18px; font-weight: 600; }
 .dad-card .status { margin-top: auto; padding-top: 18px; border-top: 2px solid currentColor; font-family: var(--font-display), sans-serif; font-weight: 800; letter-spacing: .08em; }
+.sergey-brand-chip { display: grid; grid-template-columns: 58px 1fr; gap: 12px; align-items: center; margin: 16px 0; padding: 8px; color: var(--charcoal); background: var(--white); border: 2px solid var(--charcoal); transform: rotate(-1deg); }
+.sergey-brand-chip img { width: 58px; height: 58px; object-fit: contain; background: #fff; }
+.sergey-brand-chip span { display: flex; flex-direction: column; font-family: var(--font-display), sans-serif; line-height: 1; }
+.sergey-brand-chip small { font-size: 11px; font-weight: 700; letter-spacing: .08em; }
+.sergey-brand-chip b { margin-top: 4px; font-size: 22px; }
 .red-card { color: var(--white); background: var(--red); transform: rotate(-1.2deg); }
 .green-card { color: var(--white); background: var(--green); transform: rotate(1deg); }
 .title-card { background: var(--orange); }
@@ -262,6 +267,26 @@ h1 em, h2 em { color: var(--red); font-style: normal; }
 .identity-copy { align-self: end; padding-left: 28px; border-left: 5px solid var(--orange); }
 .identity-copy p { max-width: 780px; margin-bottom: 18px; font-size: 18px; }
 .identity-copy p:last-child { margin-bottom: 0; color: rgba(255, 248, 233, .78); }
+
+.bomond-feature { display: grid; grid-template-columns: minmax(0, 1.08fr) minmax(420px, .92fr); gap: clamp(45px, 7vw, 110px); align-items: center; padding: clamp(75px, 9vw, 145px) clamp(24px, 6vw, 100px); color: var(--white); background: var(--charcoal); border-bottom: var(--line); }
+.bomond-gallery { min-height: 690px; display: grid; grid-template-columns: 1.1fr .9fr; grid-template-rows: 1fr 1fr; gap: 14px; }
+.bomond-photo { min-width: 0; min-height: 0; margin: 0; overflow: hidden; border: 3px solid var(--cream); box-shadow: 8px 8px 0 var(--red); }
+.bomond-photo img { width: 100%; height: 100%; display: block; object-fit: cover; }
+.bomond-photo-red { grid-row: 1 / 3; }
+.bomond-photo-bottle { background: #fff; }
+.bomond-photo-bottle img { object-fit: contain; }
+.bomond-copy { max-width: 650px; }
+.bomond-copy .section-label { color: var(--orange); }
+.bomond-copy h2 { margin: 0 0 32px; font-size: clamp(70px, 7.4vw, 124px); font-weight: 900; letter-spacing: -.055em; line-height: .74; }
+.bomond-copy h2 em { color: var(--orange); font-style: normal; }
+.bomond-lead { font-size: clamp(20px, 1.65vw, 26px); font-weight: 600; line-height: 1.4; }
+.bomond-facts { display: grid; grid-template-columns: repeat(3, 1fr); margin: 34px 0; border-top: 2px solid var(--cream); border-left: 2px solid var(--cream); }
+.bomond-facts div { min-height: 125px; display: flex; flex-direction: column; justify-content: space-between; padding: 16px; border-right: 2px solid var(--cream); border-bottom: 2px solid var(--cream); }
+.bomond-facts b { color: var(--orange); font-family: var(--font-display), sans-serif; font-size: 50px; line-height: 1; }
+.bomond-facts span { font-family: var(--font-display), sans-serif; font-size: 13px; font-weight: 800; letter-spacing: .05em; line-height: 1; }
+.bomond-button { margin-top: 16px; color: var(--charcoal); background: var(--orange); }
+.bomond-legal { max-width: 590px; margin: 28px 0 0; padding-top: 18px; color: rgba(255, 248, 233, .7); border-top: 1px solid rgba(255, 248, 233, .35); font-size: 12px; }
+.bomond-legal strong { color: var(--white); }
 
 .feast { color: var(--white); background: var(--green); }
 .feast-heading { display: grid; grid-template-columns: 1.4fr .6fr; gap: 24px 80px; align-items: end; margin-bottom: 65px; }
@@ -322,6 +347,11 @@ h1 em, h2 em { color: var(--red); font-style: normal; }
 .booking-basics li { display: grid; grid-template-columns: 170px 1fr; gap: 18px; padding: 15px 0; border-bottom: 1px solid rgba(255, 248, 233, .55); }
 .booking-basics b { font-family: var(--font-display), sans-serif; font-size: 18px; letter-spacing: .04em; text-transform: uppercase; }
 .booking-basics span { font-size: 14px; }
+.booking-bomond-note { max-width: 560px; display: grid; grid-template-columns: 94px 1fr; gap: 16px; align-items: center; margin-top: 26px; padding: 12px; color: var(--charcoal); background: var(--white); border: 3px solid var(--charcoal); box-shadow: 5px 5px 0 var(--charcoal); }
+.booking-bomond-note img { width: 94px; height: 94px; object-fit: contain; background: #fff; }
+.booking-bomond-note p { display: flex; flex-direction: column; margin: 0; }
+.booking-bomond-note b { font-family: var(--font-display), sans-serif; font-size: 22px; line-height: 1; }
+.booking-bomond-note span { margin-top: 5px; font-size: 13px; line-height: 1.35; }
 .booking-callout { max-width: 450px; display: flex; flex-direction: column; margin-top: 55px; padding: 26px; color: var(--charcoal); background: var(--orange); border: 3px solid var(--charcoal); box-shadow: 8px 8px 0 var(--charcoal); transform: rotate(-1deg); }
 .booking-callout span { font-family: var(--font-display), sans-serif; font-size: 15px; font-weight: 700; letter-spacing: .1em; }
 .booking-callout b { font-family: var(--font-display), sans-serif; font-size: 34px; }
@@ -366,6 +396,8 @@ footer { color: var(--white); background: var(--charcoal); }
   h1 { font-size: clamp(74px, 8.5vw, 112px); }
   .story, .feast-heading, .experience-intro, .booking, .faq { gap: 45px; }
   .dad-card { min-height: 420px; }
+  .bomond-feature { grid-template-columns: 1fr 1fr; gap: 45px; }
+  .bomond-gallery { min-height: 600px; }
   .experience-card { grid-template-columns: 90px 1fr 160px; }
   .large-number { font-size: 70px; }
 }
@@ -390,13 +422,15 @@ footer { color: var(--white); background: var(--charcoal); }
   .hero-image-frame { height: 540px; }
   .stamp { left: 42px; }
 
-  .story, .feast-heading, .experience-intro, .booking, .faq { grid-template-columns: 1fr; }
+  .story, .feast-heading, .experience-intro, .booking, .faq, .bomond-feature { grid-template-columns: 1fr; }
   .story-copy { padding-left: 20px; }
   .dad-grid, .menu-grid { grid-template-columns: 1fr; }
   .dad-card { min-height: 380px; }
   .red-card, .green-card { transform: none; }
   .culture-note, .identity-note { grid-template-columns: 1fr; }
   .identity-copy { padding: 24px 0 0; border-top: 5px solid var(--orange); border-left: 0; }
+  .bomond-gallery { min-height: 680px; }
+  .bomond-copy { max-width: none; }
   .feast-heading .section-label { grid-column: auto; }
   .feast-heading { align-items: start; }
   .menu-card { min-height: auto; }
@@ -442,6 +476,16 @@ footer { color: var(--white); background: var(--charcoal); }
   .culture-note::after { display: none; }
   .identity-note { padding: 28px 22px; gap: 26px; box-shadow: 6px 6px 0 var(--charcoal); }
   .identity-copy p { font-size: 16px; }
+  .bomond-feature { padding: 70px 20px; }
+  .bomond-gallery { min-height: 0; grid-template-columns: 1fr 1fr; grid-template-rows: 390px 260px; gap: 9px; }
+  .bomond-photo { box-shadow: 5px 5px 0 var(--red); }
+  .bomond-photo-red { grid-column: 1 / -1; grid-row: 1; }
+  .bomond-photo-bottle, .bomond-photo-color { grid-row: 2; }
+  .bomond-copy h2 { font-size: clamp(68px, 21vw, 96px); }
+  .bomond-facts { grid-template-columns: 1fr; }
+  .bomond-facts div { min-height: 95px; }
+  .booking-bomond-note { grid-template-columns: 74px 1fr; }
+  .booking-bomond-note img { width: 74px; height: 74px; }
   .feast-heading { margin-bottom: 45px; }
   .menu-title h3 { font-size: 28px; }
   .menu-card li { font-size: 16px; }
