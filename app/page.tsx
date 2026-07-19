@@ -116,6 +116,7 @@ const faqs = [
 
 export default function Home() {
   const [menuOpen, setMenuOpen] = useState(false);
+  const [dadAnimation, setDadAnimation] = useState<{ name: "vlad" | "sergey" | null; run: number }>({ name: null, run: 0 });
   const [selectedDishes, setSelectedDishes] = useState<string[]>([]);
   const [selectedExperience, setSelectedExperience] = useState("BACKYARD TAKEOVER");
   const [guestCount, setGuestCount] = useState(30);
@@ -142,6 +143,10 @@ export default function Home() {
         ? current.filter((dish) => dish !== item)
         : [...current, item],
     );
+  }
+
+  function animateDad(name: "vlad" | "sergey") {
+    setDadAnimation((current) => ({ name, run: current.run + 1 }));
   }
 
   function goToBooking() {
@@ -294,6 +299,45 @@ export default function Home() {
           </figure>
         </section>
 
+        <section className="dad-audio" aria-labelledby="dad-audio-title">
+          <div className="dad-audio-heading">
+            <p className="section-label light">A MESSAGE FROM MANAGEMENT <span>00:41</span></p>
+            <h2 id="dad-audio-title">HEAR THE<br /><em>DAD PITCH.</em></h2>
+            <p>
+              An intentionally exaggerated, Hollywood-strength Russian-accented briefing on live fire, Armenian-rooted barbecue, and mandatory portion oversight.
+            </p>
+          </div>
+          <div className="dad-audio-player">
+            <div className="audio-status">
+              <span aria-hidden="true">▶</span>
+              <div>
+                <b>THE COMPLETE DAD EXPERIENCE</b>
+                <small>AI-GENERATED VOICE · ORIGINAL FOLK-INSPIRED MUSIC · NOT VLAD OR SERGEY’S REAL VOICE</small>
+              </div>
+            </div>
+            <audio controls preload="metadata" aria-label="Play the Two Russian Dads barbecue sales pitch">
+              <source src="/two-dads-pitch.mp3" type="audio/mpeg" />
+              Your browser does not support embedded audio. <a href="/two-dads-pitch.mp3">Open the audio pitch.</a>
+            </audio>
+            <details className="audio-transcript">
+              <summary>READ THE TRANSCRIPT <span aria-hidden="true">+</span></summary>
+              <p>
+                <span lang="ru">Здравствуйте</span>, Seattle. Listen, please. We are Vlad and Sergey. Before—corporate professionals. Now—Chief Barbecue Officers.
+              </p>
+              <p>
+                We bring to your backyard real charcoal mangal. We cook Armenian khorovats and shashlik over live fire. There is smoke, lavash, herbs, pickles, stories, and very, very full table.
+              </p>
+              <p>
+                <span lang="ru">Это не доставка еды.</span> This is not food delivery. This is complete dad experience.
+              </p>
+              <p>
+                <span lang="ru">Мы отвечаем за огонь.</span> We take care of fire. We take care of guests. We make sure nobody leaves hungry. <span lang="ru">Заказывайте</span> Two Russian Dads BBQ. Come hungry. This is not suggestion.
+              </p>
+            </details>
+            <a className="button dad-audio-button" href="#book">BOOK AFTER THE BRIEFING <span aria-hidden="true">→</span></a>
+          </div>
+        </section>
+
         <section className="section story" id="story">
           <div className="section-heading story-heading">
             <p className="section-label">THE ORIGIN STORY <span>01</span></p>
@@ -312,15 +356,31 @@ export default function Home() {
             <article className="dad-card red-card vlad-card">
               <span className="card-index">01</span>
               <figure className="dad-portrait">
-                <img
-                  src="/vlad-editorial.webp"
-                  alt="Editorial portrait of Vlad Pogostkin in a logo-free black retro tracksuit holding folded lavash"
-                  width={960}
-                  height={960}
-                  loading="lazy"
-                />
-                <figcaption>REAL VLAD · EDITORIAL TREATMENT</figcaption>
+                <button
+                  className="dad-portrait-button"
+                  type="button"
+                  aria-label="Animate Vlad performing a lavash quality-control bite"
+                  onClick={() => animateDad("vlad")}
+                >
+                  <span
+                    key={`vlad-${dadAnimation.name === "vlad" ? dadAnimation.run : 0}`}
+                    className={dadAnimation.name === "vlad" ? "dad-portrait-scene vlad-scene is-active" : "dad-portrait-scene vlad-scene"}
+                  >
+                    <img
+                      src="/vlad-editorial.webp"
+                      alt="Editorial portrait of Vlad Pogostkin in a logo-free black retro tracksuit holding folded lavash"
+                      width={960}
+                      height={960}
+                      loading="lazy"
+                    />
+                    <span className="lavash-prop" aria-hidden="true" />
+                    <span className="dad-reaction vlad-reaction" aria-hidden="true">CRUNCH. APPROVED.</span>
+                    <span className="portrait-action-hint" aria-hidden="true">TAP: LAVASH TEST <b>→</b></span>
+                  </span>
+                </button>
+                <figcaption>REAL VLAD · CLICK FOR QUALITY CONTROL</figcaption>
               </figure>
+              <span className="sr-only" aria-live="polite">{dadAnimation.name === "vlad" ? "Vlad performs a lavash quality-control bite. Approved." : ""}</span>
               <h3>VLAD<br />POGOSTKIN</h3>
               <p>Live-fire operations.<br />Smoke strategy.<br />Lavash quality control.</p>
               <span className="status">STATUS: FIRED UP</span>
@@ -328,15 +388,32 @@ export default function Home() {
             <article className="dad-card green-card sergey-card">
               <span className="card-index">02</span>
               <figure className="dad-portrait">
-                <img
-                  src="/sergey-editorial.webp"
-                  alt="Editorial portrait of Sergey Shkrebtan in a logo-free black retro tracksuit holding barbecue tongs"
-                  width={960}
-                  height={960}
-                  loading="lazy"
-                />
-                <figcaption>REAL SERGEY · EDITORIAL TREATMENT</figcaption>
+                <button
+                  className="dad-portrait-button"
+                  type="button"
+                  aria-label="Animate Sergey conducting a barbecue tong inspection"
+                  onClick={() => animateDad("sergey")}
+                >
+                  <span
+                    key={`sergey-${dadAnimation.name === "sergey" ? dadAnimation.run : 0}`}
+                    className={dadAnimation.name === "sergey" ? "dad-portrait-scene sergey-scene is-active" : "dad-portrait-scene sergey-scene"}
+                  >
+                    <img
+                      src="/sergey-editorial.webp"
+                      alt="Editorial portrait of Sergey Shkrebtan in a logo-free black retro tracksuit holding barbecue tongs"
+                      width={960}
+                      height={960}
+                      loading="lazy"
+                    />
+                    <span className="tong-spark tong-spark-one" aria-hidden="true">✦</span>
+                    <span className="tong-spark tong-spark-two" aria-hidden="true">✦</span>
+                    <span className="dad-reaction sergey-reaction" aria-hidden="true">CLACK. CLACK. READY.</span>
+                    <span className="portrait-action-hint" aria-hidden="true">TAP: TONG INSPECTION <b>→</b></span>
+                  </span>
+                </button>
+                <figcaption>REAL SERGEY · CLICK FOR TONG PROTOCOL</figcaption>
               </figure>
+              <span className="sr-only" aria-live="polite">{dadAnimation.name === "sergey" ? "Sergey conducts a serious barbecue tong inspection. Ready." : ""}</span>
               <h3>SERGEY<br />SHKREBTAN</h3>
               <p>Table logistics.<br />Portion auditing.<br />Freezer temperature oversight.</p>
               <div className="sergey-brand-chip">
