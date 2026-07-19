@@ -265,6 +265,35 @@ export default function Home() {
           <a className="button purchase-path-button" href="#experience">START MY ESTIMATE <span aria-hidden="true">→</span></a>
         </section>
 
+        <section className="dad-video" aria-labelledby="dad-video-title">
+          <div className="dad-video-copy">
+            <p className="section-label">A VERY SERIOUS DEMONSTRATION <span>00:08</span></p>
+            <h2 id="dad-video-title">FIRST THEY DANCE.<br /><em>THEN THE FIRE GETS SERIOUS.</em></h2>
+            <p>
+              Eight seconds of strategic movement, skewer oversight, and the exact moment two dads remember they are technically at work.
+            </p>
+            <div className="dad-video-notes" aria-label="Video details">
+              <span>2 FICTIONAL DADS</span><span>1 LIVE FIRE</span><span>0 LOGOS</span>
+            </div>
+            <a className="button dad-video-button" href="#experience">PRICE THE REAL EXPERIENCE <span aria-hidden="true">→</span></a>
+          </div>
+          <figure className="dad-video-frame">
+            <video
+              controls
+              playsInline
+              preload="metadata"
+              poster="/dads-dance-bbq-poster.webp"
+              aria-label="Two fictional editorial stand-in dads in logo-free black tracksuits dance briefly, then turn shashlik skewers over a charcoal mangal"
+            >
+              <source src="/dads-dance-bbq.mp4" type="video/mp4" />
+              Your browser does not support embedded video. <a href="/dads-dance-bbq.mp4">Open the barbecue video.</a>
+            </video>
+            <figcaption>
+              PRESS PLAY. THEY WERE TOLD THIS COUNTS AS MARKETING. · FICTIONAL EDITORIAL STAND-INS, NOT ACTUAL FOOTAGE OF VLAD AND SERGEY.
+            </figcaption>
+          </figure>
+        </section>
+
         <section className="section story" id="story">
           <div className="section-heading story-heading">
             <p className="section-label">THE ORIGIN STORY <span>01</span></p>
