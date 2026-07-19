@@ -77,6 +77,18 @@ const priceAllocation = [
 
 const faqs = [
   {
+    q: "What does the base price include?",
+    a: "Two proteins, the full mangal table, standard nonalcoholic drinks, Vlad and Sergey, a size-appropriate service crew, up to four on-site hours, setup, cleanup, charcoal, and live-fire equipment.",
+  },
+  {
+    q: "What happens after I send an inquiry?",
+    a: "Your email includes the date, city, guest count, working estimate, menu shortlist, and venue details. The dads confirm availability and turn that brief into a written custom proposal before anything is booked.",
+  },
+  {
+    q: "Are there surprise service charges?",
+    a: "No automatic gratuity is added. Sales tax is required based on the event location. Rentals, unusual access, parking, venue-specific permits, ferries, and travel beyond the published zone are clearly quoted when they apply.",
+  },
+  {
     q: "Where do you travel?",
     a: "Greater Seattle is our primary service area. Tell us your event city and we’ll confirm travel details in your custom proposal.",
   },
@@ -189,9 +201,9 @@ export default function Home() {
 
         <nav id="site-nav" className={menuOpen ? "nav open" : "nav"} aria-label="Primary navigation">
           <a href="#story" onClick={closeMenu}>Our Story</a>
-          <a href="#feast" onClick={closeMenu}>The Feast</a>
-          <a href="#experience" onClick={closeMenu}>The Experience</a>
-          <a className="nav-cta" href="#book" onClick={closeMenu}>Book the Dads</a>
+          <a href="#feast" onClick={closeMenu}>The Menu</a>
+          <a href="#experience" onClick={closeMenu}>Pricing</a>
+          <a className="nav-cta" href="#book" onClick={closeMenu}>Check Your Date</a>
         </nav>
       </header>
 
@@ -201,11 +213,16 @@ export default function Home() {
             <p className="eyebrow">GREATER SEATTLE <span>·</span> BACKYARD TO YOUR BACKYARD</p>
             <h1>LAID OFF.<br /><em>FIRED UP.</em></h1>
             <p className="hero-intro">
-              Vlad Pogostkin and Sergey Shkrebtan bring the mangal, the smoke, and an Armenian-rooted barbecue table shaped by family tradition and generous hospitality.
+              Vlad Pogostkin and Sergey Shkrebtan bring the mangal, the smoke, and an Armenian-rooted barbecue table—cooked live, served generously, and cleaned up before they leave.
             </p>
+            <div className="hero-offer" aria-label="Starting price and minimum event size">
+              <span>FULL LIVE-FIRE CATERING FROM</span>
+              <b>$110 <small>/ GUEST</small></b>
+              <em>20 GUEST MINIMUM · NO AUTOMATIC GRATUITY</em>
+            </div>
             <div className="button-row">
-              <a className="button button-primary" href="#book">Book the Dads <span aria-hidden="true">→</span></a>
-              <a className="button button-secondary" href="#feast">See the Feast <span aria-hidden="true">↓</span></a>
+              <a className="button button-primary" href="#experience">Price My Event <span aria-hidden="true">→</span></a>
+              <a className="button button-secondary" href="#feast">See the Menu <span aria-hidden="true">↓</span></a>
             </div>
             <p className="trust-line">Private parties <i>·</i> Corporate events <i>·</i> Backyard takeovers</p>
           </div>
@@ -234,6 +251,19 @@ export default function Home() {
             <span>LIVE FIRE · FULL TABLE</span>
           </div>
         </aside>
+
+        <section className="purchase-path" aria-labelledby="purchase-path-title">
+          <div>
+            <span className="purchase-path-kicker">FROM IDEA TO FIRE</span>
+            <h2 id="purchase-path-title">BOOKING WITHOUT THE COMMITTEE MEETING.</h2>
+          </div>
+          <ol>
+            <li><span>01</span><b>Build an estimate</b><small>Choose format, guest count, travel, and upgrades.</small></li>
+            <li><span>02</span><b>Send your event brief</b><small>Your menu and estimate are already attached.</small></li>
+            <li><span>03</span><b>Approve the proposal</b><small>Availability, final menu, venue details, and tax are confirmed in writing.</small></li>
+          </ol>
+          <a className="button purchase-path-button" href="#experience">START MY ESTIMATE <span aria-hidden="true">→</span></a>
+        </section>
 
         <section className="section story" id="story">
           <div className="section-heading story-heading">
@@ -320,42 +350,6 @@ export default function Home() {
           </div>
         </section>
 
-        <section className="bomond-feature" aria-labelledby="bomond-title">
-          <div className="bomond-gallery" aria-label="Bomond Vodka product photography">
-            <figure className="bomond-photo bomond-photo-red">
-              <img src="/bomond-red.webp" alt="Bomond Vodka bottle photographed in a dramatic red and black studio setting" width={664} height={1000} loading="lazy" />
-            </figure>
-            <figure className="bomond-photo bomond-photo-bottle">
-              <img src="/bomond-bottle.webp" alt="Clear embossed Bomond Vodka bottle on a white background" width={900} height={900} loading="lazy" />
-            </figure>
-            <figure className="bomond-photo bomond-photo-color">
-              <img src="/bomond-color.webp" alt="Bomond Vodka bottle photographed with red, blue, and violet studio lighting" width={664} height={1000} loading="lazy" />
-            </figure>
-          </div>
-
-          <div className="bomond-copy">
-            <p className="section-label light">SERGEY’S OTHER VENTURE</p>
-            <h2 id="bomond-title">A VERY<br />SERIOUS<br /><em>BOTTLE.</em></h2>
-            <p className="bomond-lead">
-              Sergey is also behind Bomond Vodka, a Seattle-area brand made and bottled in France from French wheat and grapes. Apparently one highly controlled process was not enough for this dad.
-            </p>
-            <div className="bomond-facts" aria-label="Bomond Vodka facts">
-              <div><b>6×</b><span>DISTILLED</span></div>
-              <div><b>92</b><span>POINT GOLD · 2018</span></div>
-              <div><b>FR</b><span>MADE &amp; BOTTLED</span></div>
-            </div>
-            <p>
-              The official brand describes Bomond as distilled without additives or enzymes and made with limestone-filtered water. It also received Silver medals at the San Francisco World Spirits Competition in 2017 and 2018.
-            </p>
-            <a className="button bomond-button" href="https://bomondvodka.com/" target="_blank" rel="noreferrer">
-              Visit Bomond Vodka <span aria-hidden="true">↗</span>
-            </a>
-            <p className="bomond-legal">
-              <strong>21+ · Please enjoy responsibly.</strong> Bomond is a separate brand and is not included with catering. Two Russian Dads BBQ does not sell, serve, or provide alcohol.
-            </p>
-          </div>
-        </section>
-
         <section className="section feast" id="feast">
           <div className="section-heading feast-heading">
             <p className="section-label light">THE ARMENIAN MANGAL TABLE <span>02</span></p>
@@ -396,6 +390,10 @@ export default function Home() {
             </div>
           </div>
           <p className="menu-note"><b>MAKE IT YOUR TABLE.</b> Vegetarian menus, allergy-aware adjustments, and meat substitutions are available with advance notice.</p>
+          <div className="feast-cta">
+            <p><span>SEEN ENOUGH?</span><b>PRICE THIS TABLE FOR YOUR GUEST COUNT.</b></p>
+            <a className="button" href="#experience">BUILD MY ESTIMATE <span aria-hidden="true">→</span></a>
+          </div>
         </section>
 
         <section className="section experience" id="experience">
@@ -619,7 +617,10 @@ export default function Home() {
               <label className="full">Venue details<textarea name="venue" rows={2} placeholder="Outdoor space, water access, charcoal approval…" /></label>
               <label className="full">Additional notes<textarea name="notes" rows={4} /></label>
             </div>
-            <button className="button form-button" type="submit">CREATE EMAIL INQUIRY <span aria-hidden="true">→</span></button>
+            <button className="button form-button" type="submit">OPEN MY BOOKING EMAIL <span aria-hidden="true">→</span></button>
+            <div className="booking-assurance" aria-label="Booking assurances">
+              <span>NO PAYMENT TO INQUIRE</span><span>NO AUTOMATIC GRATUITY</span><span>FINAL PRICE IN WRITING</span>
+            </div>
             <p className="form-disclaimer">
               This form opens a draft in your email app; it does not send automatically. <strong>Booking note:</strong> bookings@tworussiandadsbbq.com is a temporary address pending final confirmation.
             </p>
@@ -640,6 +641,47 @@ export default function Home() {
             ))}
           </div>
         </section>
+
+        <section className="bomond-feature" aria-labelledby="bomond-title">
+          <div className="bomond-gallery" aria-label="Bomond Vodka product photography">
+            <figure className="bomond-photo bomond-photo-red">
+              <img src="/bomond-red.webp" alt="Bomond Vodka bottle photographed in a dramatic red and black studio setting" width={664} height={1000} loading="lazy" />
+            </figure>
+            <figure className="bomond-photo bomond-photo-bottle">
+              <img src="/bomond-bottle.webp" alt="Clear embossed Bomond Vodka bottle on a white background" width={900} height={900} loading="lazy" />
+            </figure>
+            <figure className="bomond-photo bomond-photo-color">
+              <img src="/bomond-color.webp" alt="Bomond Vodka bottle photographed with red, blue, and violet studio lighting" width={664} height={1000} loading="lazy" />
+            </figure>
+          </div>
+
+          <div className="bomond-copy">
+            <p className="section-label light">SERGEY’S OTHER VENTURE</p>
+            <h2 id="bomond-title">A VERY<br />SERIOUS<br /><em>BOTTLE.</em></h2>
+            <p className="bomond-lead">
+              Sergey is also behind Bomond Vodka, a Seattle-area brand made and bottled in France from French wheat and grapes. Apparently one highly controlled process was not enough for this dad.
+            </p>
+            <div className="bomond-facts" aria-label="Bomond Vodka facts">
+              <div><b>6×</b><span>DISTILLED</span></div>
+              <div><b>92</b><span>POINT GOLD · 2018</span></div>
+              <div><b>FR</b><span>MADE &amp; BOTTLED</span></div>
+            </div>
+            <p>
+              The official brand describes Bomond as distilled without additives or enzymes and made with limestone-filtered water. It also received Silver medals at the San Francisco World Spirits Competition in 2017 and 2018.
+            </p>
+            <a className="button bomond-button" href="https://bomondvodka.com/" target="_blank" rel="noreferrer">
+              Visit Bomond Vodka <span aria-hidden="true">↗</span>
+            </a>
+            <p className="bomond-legal">
+              <strong>21+ · Please enjoy responsibly.</strong> Bomond is a separate brand and is not included with catering. Two Russian Dads BBQ does not sell, serve, or provide alcohol.
+            </p>
+          </div>
+        </section>
+      </div>
+
+      <div className="mobile-purchase-bar" aria-label="Quick booking action">
+        <p><span>FULL EXPERIENCE FROM</span><b>$110 / GUEST</b></p>
+        <a href="#book">CHECK DATE <span aria-hidden="true">→</span></a>
       </div>
 
       <footer>
