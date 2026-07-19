@@ -273,6 +273,50 @@ export default function Home() {
             ))}
           </div>
 
+          <div className="expectations" aria-labelledby="expectations-title">
+            <div className="expectations-heading">
+              <p className="section-label">BEFORE YOU BOOK</p>
+              <h3 id="expectations-title">THE PRACTICAL<br /><em>FIRE DETAILS.</em></h3>
+              <p>Clear expectations now. A custom proposal after we know the event.</p>
+            </div>
+            <div className="expectations-grid">
+              <article>
+                <span>01</span>
+                <h4>20+ GUESTS</h4>
+                <p>The full dad experience is designed for gatherings of twenty guests or more.</p>
+              </article>
+              <article>
+                <span>02</span>
+                <h4>BOOK EARLY</h4>
+                <p>A few weeks of lead time is best. Short-notice events depend on menu and crew availability.</p>
+              </article>
+              <article>
+                <span>03</span>
+                <h4>OUTDOORS REQUIRED</h4>
+                <p>We need a safe, level outdoor cooking area, water access, and venue approval for charcoal.</p>
+              </article>
+              <article>
+                <span>04</span>
+                <h4>GREATER SEATTLE</h4>
+                <p>Our primary service area. Your city, access, and travel time are confirmed in the proposal.</p>
+              </article>
+              <article>
+                <span>05</span>
+                <h4>WEATHER PLAN</h4>
+                <p>Seattle happens. A safe covered cooking area may be required when rain is in the forecast.</p>
+              </article>
+              <article>
+                <span>06</span>
+                <h4>CUSTOM PROPOSAL</h4>
+                <p>Guest count, proteins, service time, travel, rentals, and venue access shape the final quote.</p>
+              </article>
+            </div>
+            <div className="expectations-note">
+              <b>WHAT IS INCLUDED?</b>
+              <p>Live-fire setup, cooking, the agreed menu, service plan, and an appropriately serious amount of food. Alcohol is never sold or provided.</p>
+            </div>
+          </div>
+
           <div className="process" aria-label="How the barbecue experience works">
             {[
               ["01", "THE DADS ARRIVE"],
@@ -290,6 +334,11 @@ export default function Home() {
             <p className="section-label light">BOOK THE DADS <span>04</span></p>
             <h2>PUT TWO<br />RUSSIAN DADS<br /><em>IN YOUR BACKYARD.</em></h2>
             <p>Tell us your date, city, and guest count. We’ll build a custom mangal menu and an appropriately dramatic arrival plan.</p>
+            <ul className="booking-basics" aria-label="Booking basics">
+              <li><b>20 guest minimum</b><span>Designed for full gatherings, not drop-off orders.</span></li>
+              <li><b>Custom proposal</b><span>Built around menu, travel, timing, and venue access.</span></li>
+              <li><b>Outdoor fire plan</b><span>Charcoal approval and a safe cooking area are required.</span></li>
+            </ul>
             <div className="booking-callout">
               <span>THE PROMISE</span>
               <b>NOBODY LEAVES HUNGRY.</b>
@@ -308,9 +357,9 @@ export default function Home() {
               <label>Phone<input name="phone" type="tel" autoComplete="tel" /></label>
               <label>Event date *<input name="date" type="date" required /></label>
               <label>Event city *<input name="city" type="text" autoComplete="address-level2" required /></label>
-              <label>Guest count *<input name="guests" type="number" min="10" inputMode="numeric" required /></label>
-              <label className="full">Event type
-                <select name="type" defaultValue="">
+              <label>Guest count *<input name="guests" type="number" min="20" inputMode="numeric" placeholder="20 minimum" required /></label>
+              <label className="full">Event type *
+                <select name="type" defaultValue="" required>
                   <option value="" disabled>Select an event type</option>
                   <option>Private party</option>
                   <option>Corporate event</option>
