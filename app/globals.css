@@ -12,6 +12,8 @@
 
 * { box-sizing: border-box; }
 
+.sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0; }
+
 html { scroll-behavior: smooth; }
 
 body {
@@ -301,8 +303,64 @@ h1 em, h2 em { color: var(--red); font-style: normal; }
 .sergey-brand-chip b { margin-top: 4px; font-size: 22px; }
 .sergey-card, .vlad-card { padding-top: 20px; }
 .dad-portrait { position: relative; height: 245px; margin: 12px 0 24px; overflow: hidden; color: var(--charcoal); background: var(--cream); border: 3px solid var(--charcoal); box-shadow: 5px 5px 0 var(--charcoal); }
-.dad-portrait img { width: 100%; height: 100%; display: block; object-fit: cover; object-position: center 28%; }
-.dad-portrait figcaption { position: absolute; right: 0; bottom: 0; margin: 0; padding: 6px 9px; color: var(--charcoal); background: var(--orange); border-top: 2px solid var(--charcoal); border-left: 2px solid var(--charcoal); font-family: var(--font-display), sans-serif; font-size: 11px; font-weight: 900; letter-spacing: .07em; line-height: 1; }
+.dad-portrait-button { width: 100%; height: 100%; display: block; padding: 0; color: inherit; background: transparent; border: 0; cursor: pointer; }
+.dad-portrait-button:focus-visible { position: relative; z-index: 4; outline: 5px solid var(--orange); outline-offset: -7px; }
+.dad-portrait-scene { position: relative; width: 100%; height: 100%; display: block; overflow: hidden; }
+.dad-portrait-scene img { width: 100%; height: 100%; display: block; object-fit: cover; object-position: center 28%; transition: filter .2s ease, transform .2s ease; }
+.dad-portrait-button:hover img { filter: saturate(1.08) contrast(1.04); transform: scale(1.025); }
+.portrait-action-hint { position: absolute; left: 9px; top: 9px; z-index: 3; display: flex; gap: 8px; align-items: center; padding: 6px 8px; color: var(--white); background: var(--charcoal); border: 2px solid var(--cream); font-family: var(--font-display), sans-serif; font-size: 11px; font-weight: 900; letter-spacing: .06em; line-height: 1; box-shadow: 3px 3px 0 var(--red); transition: color .15s ease, background .15s ease; }
+.portrait-action-hint b { color: var(--orange); font-size: 15px; line-height: .7; }
+.dad-portrait-button:hover .portrait-action-hint { color: var(--charcoal); background: var(--orange); }
+.dad-reaction { position: absolute; z-index: 4; left: 50%; top: 15%; width: max-content; max-width: 90%; padding: 8px 11px; opacity: 0; color: var(--white); background: var(--green); border: 2px solid var(--charcoal); box-shadow: 4px 4px 0 var(--charcoal); font-family: var(--font-display), sans-serif; font-size: 16px; font-weight: 900; letter-spacing: .05em; line-height: 1; transform: translate(-50%, -18px) rotate(-3deg) scale(.7); }
+.lavash-prop { position: absolute; z-index: 3; right: 8%; bottom: -7%; width: 72px; height: 104px; opacity: 0; background: radial-gradient(circle at 30% 30%, #9c682e 0 2px, transparent 3px), radial-gradient(circle at 68% 60%, #b77a35 0 2px, transparent 3px), #e8c98d; background-size: 20px 22px, 25px 27px, auto; border: 3px solid var(--charcoal); clip-path: polygon(8% 100%, 45% 0, 100% 92%); transform: rotate(12deg); }
+.tong-spark { position: absolute; z-index: 3; opacity: 0; color: var(--orange); font-size: 42px; line-height: 1; text-shadow: 2px 2px 0 var(--charcoal); }
+.tong-spark-one { top: 24%; right: 4%; }
+.tong-spark-two { top: 42%; right: 21%; font-size: 27px; }
+.sergey-reaction { color: var(--charcoal); background: var(--orange); }
+.vlad-scene.is-active img { animation: vlad-bite 1.45s cubic-bezier(.2, .8, .25, 1); }
+.vlad-scene.is-active .lavash-prop { animation: lavash-to-mouth 1.45s cubic-bezier(.2, .8, .25, 1); }
+.vlad-scene.is-active .vlad-reaction { animation: dad-reaction-pop 1.45s ease; }
+.sergey-scene.is-active img { animation: sergey-tong-check 1.35s cubic-bezier(.22, .75, .25, 1); transform-origin: 70% 70%; }
+.sergey-scene.is-active .sergey-reaction { animation: dad-reaction-pop 1.35s ease; }
+.sergey-scene.is-active .tong-spark-one { animation: tong-spark 1.35s .12s ease; }
+.sergey-scene.is-active .tong-spark-two { animation: tong-spark 1.35s .27s ease; }
+.dad-portrait figcaption { position: absolute; z-index: 5; right: 0; bottom: 0; margin: 0; padding: 6px 9px; pointer-events: none; color: var(--charcoal); background: var(--orange); border-top: 2px solid var(--charcoal); border-left: 2px solid var(--charcoal); font-family: var(--font-display), sans-serif; font-size: 11px; font-weight: 900; letter-spacing: .07em; line-height: 1; }
+
+@keyframes vlad-bite {
+  0%, 100% { transform: scale(1); }
+  24% { transform: scale(1.045) translateY(3px); }
+  46% { transform: scale(1.08) translate(2px, 8px) rotate(-1deg); }
+  58% { transform: scale(1.07) translate(2px, 5px) rotate(1deg); }
+  74% { transform: scale(1.045) translateY(2px); }
+}
+
+@keyframes lavash-to-mouth {
+  0%, 8%, 100% { opacity: 0; transform: translate(0, 18px) rotate(12deg) scale(.9); }
+  16% { opacity: 1; }
+  42%, 58% { opacity: 1; transform: translate(-54px, -68px) rotate(-9deg) scale(.72); }
+  69% { opacity: 1; transform: translate(-48px, -55px) rotate(4deg) scale(.65); }
+  84% { opacity: 0; transform: translate(-40px, -44px) rotate(8deg) scale(.55); }
+}
+
+@keyframes sergey-tong-check {
+  0%, 100% { transform: scale(1); }
+  18% { transform: scale(1.035) rotate(-1.5deg); }
+  31% { transform: scale(1.06) rotate(2.4deg); }
+  42% { transform: scale(1.06) rotate(-1.2deg); }
+  53% { transform: scale(1.06) rotate(2.2deg); }
+  68% { transform: scale(1.035) rotate(-.7deg); }
+}
+
+@keyframes dad-reaction-pop {
+  0%, 38%, 100% { opacity: 0; transform: translate(-50%, -18px) rotate(-3deg) scale(.7); }
+  47%, 82% { opacity: 1; transform: translate(-50%, 0) rotate(-3deg) scale(1); }
+}
+
+@keyframes tong-spark {
+  0%, 25%, 100% { opacity: 0; transform: scale(.2) rotate(0); }
+  38%, 62% { opacity: 1; transform: scale(1) rotate(25deg); }
+  78% { opacity: 0; transform: scale(1.5) rotate(45deg); }
+}
 .sergey-card h3, .vlad-card h3 { margin: 0 0 20px; }
 .red-card { color: var(--white); background: var(--red); transform: rotate(-1.2deg); }
 .green-card { color: var(--white); background: var(--green); transform: rotate(1deg); }
@@ -719,4 +777,11 @@ footer { color: var(--white); background: var(--charcoal); }
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
   *, *::before, *::after { transition-duration: .01ms !important; animation-duration: .01ms !important; animation-iteration-count: 1 !important; }
+  .dad-portrait-scene.is-active img,
+  .dad-portrait-scene.is-active .lavash-prop,
+  .dad-portrait-scene.is-active .tong-spark,
+  .dad-portrait-scene.is-active .dad-reaction { animation: none !important; }
+  .dad-portrait-scene.is-active .lavash-prop,
+  .dad-portrait-scene.is-active .tong-spark { display: none; }
+  .dad-portrait-scene.is-active .dad-reaction { opacity: 1; transform: translate(-50%, 0) rotate(-3deg) scale(1); }
 }
