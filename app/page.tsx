@@ -296,10 +296,10 @@ export default function Home() {
 
         <section className="dad-audio" aria-labelledby="dad-audio-title">
           <div className="dad-audio-heading">
-            <p className="section-label light">A MESSAGE FROM MANAGEMENT <span>00:37</span></p>
+            <p className="section-label light">A MESSAGE FROM MANAGEMENT <span>00:43</span></p>
             <h2 id="dad-audio-title">HEAR THE<br /><em>DAD PITCH.</em></h2>
             <p>
-              A warm, thickly Russian-accented briefing on live fire, Armenian-rooted barbecue, generous hospitality, and mandatory portion oversight.
+              A Russian-first, English-second briefing on live fire, Armenian-rooted barbecue, generous hospitality, and mandatory portion oversight.
             </p>
           </div>
           <div className="dad-audio-player">
@@ -317,16 +317,16 @@ export default function Home() {
             <details className="audio-transcript">
               <summary>READ THE TRANSCRIPT <span aria-hidden="true">+</span></summary>
               <p>
-                Zdravstvuyte, Seattle. Vlad and Sergey here—two former corporate professionals, now Chief Barbecue Officers.
+                <span lang="ru">Здравствуйте</span>, Seattle. Listen, please. We are Vlad and Sergey. Before—corporate professionals. Now—Chief Barbecue Officers.
               </p>
               <p>
-                We bring a real charcoal mangal to your backyard, cook Armenian-rooted khorovats and shashlik over live fire, and build the kind of generous table where nobody leaves hungry.
+                We bring to your backyard real charcoal mangal. We cook Armenian khorovats and shashlik over live fire. There is smoke, lavash, herbs, pickles, stories, and very, very full table.
               </p>
               <p>
-                You get smoke, lavash, herbs, pickles, stories, and two dads conducting very serious portion audits.
+                <span lang="ru">Это не доставка еды.</span> This is not food delivery. This is complete dad experience.
               </p>
               <p>
-                This is not drop-off catering. This is the complete Two Russian Dads experience. Book Two Russian Dads BBQ. Come hungry. This is not a suggestion.
+                <span lang="ru">Мы отвечаем за огонь.</span> We take care of fire. We take care of guests. We make sure nobody leaves hungry. <span lang="ru">Заказывайте</span> Two Russian Dads BBQ. Come hungry. This is not suggestion.
               </p>
             </details>
             <a className="button dad-audio-button" href="#book">BOOK AFTER THE BRIEFING <span aria-hidden="true">→</span></a>
