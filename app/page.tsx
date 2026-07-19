@@ -296,10 +296,10 @@ export default function Home() {
 
         <section className="dad-audio" aria-labelledby="dad-audio-title">
           <div className="dad-audio-heading">
-            <p className="section-label light">A MESSAGE FROM MANAGEMENT <span>00:43</span></p>
+            <p className="section-label light">A MESSAGE FROM MANAGEMENT <span>00:41</span></p>
             <h2 id="dad-audio-title">HEAR THE<br /><em>DAD PITCH.</em></h2>
             <p>
-              A Russian-first, English-second briefing on live fire, Armenian-rooted barbecue, generous hospitality, and mandatory portion oversight.
+              An intentionally exaggerated, Hollywood-strength Russian-accented briefing on live fire, Armenian-rooted barbecue, and mandatory portion oversight.
             </p>
           </div>
           <div className="dad-audio-player">
