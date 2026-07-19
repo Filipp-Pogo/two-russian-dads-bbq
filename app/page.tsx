@@ -89,6 +89,21 @@ const faqs = [
 
 export default function Home() {
   const [menuOpen, setMenuOpen] = useState(false);
+  const [selectedDishes, setSelectedDishes] = useState<string[]>([]);
+  const [selectedExperience, setSelectedExperience] = useState("");
+
+  function toggleDish(item: string) {
+    setSelectedDishes((current) =>
+      current.includes(item)
+        ? current.filter((dish) => dish !== item)
+        : [...current, item],
+    );
+  }
+
+  function goToBooking() {
+    const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    document.getElementById("book")?.scrollIntoView({ behavior: reducedMotion ? "auto" : "smooth", block: "start" });
+  }
 
   function createEmailInquiry(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
@@ -101,6 +116,8 @@ export default function Home() {
       `Event city: ${data.get("city")}`,
       `Guest count: ${data.get("guests")}`,
       `Event type: ${data.get("type")}`,
+      `Preferred experience: ${data.get("experience") || "Not selected"}`,
+      `Menu shortlist: ${data.get("menuShortlist") || "Not selected"}`,
       `Dietary restrictions: ${data.get("dietary")}`,
       `Venue details: ${data.get("venue")}`,
       `Additional notes: ${data.get("notes")}`,
@@ -316,10 +333,32 @@ export default function Home() {
               <article className="menu-card" key={group.title}>
                 <div className="menu-title"><span>{group.number}</span><h3>{group.title}</h3></div>
                 <ul>
-                  {group.items.map((item) => <li key={item}>{item}</li>)}
+                  {group.items.map((item) => {
+                    const selected = selectedDishes.includes(item);
+                    return (
+                      <li className={selected ? "selected" : ""} key={item}>
+                        <button type="button" aria-pressed={selected} onClick={() => toggleDish(item)}>
+                          <span>{item}</span><i aria-hidden="true">{selected ? "✓" : "+"}</i>
+                        </button>
+                      </li>
+                    );
+                  })}
                 </ul>
               </article>
             ))}
+          </div>
+          <div className="feast-builder" aria-live="polite">
+            <div>
+              <p className="section-label light">YOUR FEAST SHORTLIST</p>
+              <h3>{selectedDishes.length ? `${selectedDishes.length} ITEM${selectedDishes.length === 1 ? "" : "S"} SELECTED` : "TAP A DISH. BUILD A TABLE."}</h3>
+              <div className="feast-selection">
+                {selectedDishes.length ? selectedDishes.map((dish) => <span key={dish}>{dish}</span>) : <p>Your choices will follow you into the inquiry form. The dads will handle final menu strategy.</p>}
+              </div>
+            </div>
+            <div className="feast-builder-actions">
+              {selectedDishes.length > 0 && <button type="button" className="clear-selection" onClick={() => setSelectedDishes([])}>Clear</button>}
+              <button type="button" className="button shortlist-button" onClick={goToBooking}>Add to Inquiry <span aria-hidden="true">→</span></button>
+            </div>
           </div>
           <p className="menu-note"><b>MAKE IT YOUR TABLE.</b> Vegetarian menus, allergy-aware adjustments, and meat substitutions are available with advance notice.</p>
         </section>
@@ -336,20 +375,33 @@ export default function Home() {
           </div>
 
           <div className="experience-list">
-            {experiences.map((item) => (
-              <article className="experience-card" key={item.name}>
+            {experiences.map((item) => {
+              const selected = selectedExperience === item.name;
+              return (
+              <article className={selected ? "experience-card selected" : "experience-card"} key={item.name}>
                 <span className="large-number">{item.number}</span>
                 <div>
                   <p className="guest-size">SUGGESTED SIZE: {item.size}</p>
                   <h3>{item.name}</h3>
                   <p>{item.copy}</p>
                 </div>
-                <div className="proposal">
-                  <span>PRICING</span>
-                  <b>CUSTOM<br />PROPOSAL</b>
+                <div className="experience-actions">
+                  <div className="proposal">
+                    <span>PRICING</span>
+                    <b>CUSTOM<br />PROPOSAL</b>
+                  </div>
+                  <button type="button" className="experience-select" aria-pressed={selected} onClick={() => setSelectedExperience(selected ? "" : item.name)}>
+                    {selected ? "SELECTED ✓" : "CHOOSE THIS"}
+                  </button>
                 </div>
               </article>
-            ))}
+              );
+            })}
+          </div>
+
+          <div className={selectedExperience ? "experience-choice active" : "experience-choice"} aria-live="polite">
+            <p><span>YOUR FORMAT</span><b>{selectedExperience || "Choose an experience above. No committee meeting required."}</b></p>
+            <button type="button" onClick={goToBooking} disabled={!selectedExperience}>Continue to Booking <span aria-hidden="true">→</span></button>
           </div>
 
           <div className="expectations" aria-labelledby="expectations-title">
@@ -430,10 +482,20 @@ export default function Home() {
           </div>
 
           <form className="booking-form" onSubmit={createEmailInquiry}>
+            <input type="hidden" name="experience" value={selectedExperience} />
+            <input type="hidden" name="menuShortlist" value={selectedDishes.join(", ")} />
             <div className="form-header">
               <h3>START THE INQUIRY</h3>
               <p>All fields marked * are required.</p>
             </div>
+            {(selectedExperience || selectedDishes.length > 0) && (
+              <div className="form-selection-summary" aria-live="polite">
+                <span>YOUR WORKING BRIEF</span>
+                {selectedExperience && <p><b>Experience:</b> {selectedExperience}</p>}
+                {selectedDishes.length > 0 && <p><b>Menu shortlist:</b> {selectedDishes.join(" · ")}</p>}
+                <small>These preferences will be included in your email inquiry and confirmed in the custom proposal.</small>
+              </div>
+            )}
             <div className="form-grid">
               <label>Name *<input name="name" type="text" autoComplete="name" required /></label>
               <label>Email *<input name="email" type="email" autoComplete="email" required /></label>
