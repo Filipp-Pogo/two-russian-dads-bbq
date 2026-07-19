@@ -83,7 +83,7 @@ const faqs = [
   },
   {
     q: "Are these real photos of Vlad and Sergey?",
-    a: "Sergey’s individual portrait uses his real face from a supplied photograph with a playful editorial treatment. The two-dad hero image remains a temporary stand-in until a professional shoot with Vlad and Sergey is available.",
+    a: "Vlad and Sergey’s individual portraits use their real faces from supplied photographs with playful editorial treatments. The two-dad hero image remains a temporary stand-in until a professional shoot with both dads is available.",
   },
 ];
 
@@ -198,8 +198,18 @@ export default function Home() {
           </div>
 
           <div className="dad-grid">
-            <article className="dad-card red-card">
+            <article className="dad-card red-card vlad-card">
               <span className="card-index">01</span>
+              <figure className="dad-portrait">
+                <img
+                  src="/vlad-editorial.webp"
+                  alt="Editorial portrait of Vlad Pogostkin in a logo-free black retro tracksuit holding folded lavash"
+                  width={960}
+                  height={960}
+                  loading="lazy"
+                />
+                <figcaption>REAL VLAD · EDITORIAL TREATMENT</figcaption>
+              </figure>
               <h3>VLAD<br />POGOSTKIN</h3>
               <p>Live-fire operations.<br />Smoke strategy.<br />Lavash quality control.</p>
               <span className="status">STATUS: FIRED UP</span>

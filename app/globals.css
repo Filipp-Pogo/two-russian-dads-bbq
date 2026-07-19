@@ -248,11 +248,11 @@ h1 em, h2 em { color: var(--red); font-style: normal; }
 .sergey-brand-chip span { display: flex; flex-direction: column; font-family: var(--font-display), sans-serif; line-height: 1; }
 .sergey-brand-chip small { font-size: 11px; font-weight: 700; letter-spacing: .08em; }
 .sergey-brand-chip b { margin-top: 4px; font-size: 22px; }
-.sergey-card { padding-top: 20px; }
+.sergey-card, .vlad-card { padding-top: 20px; }
 .dad-portrait { position: relative; height: 245px; margin: 12px 0 24px; overflow: hidden; color: var(--charcoal); background: var(--cream); border: 3px solid var(--charcoal); box-shadow: 5px 5px 0 var(--charcoal); }
 .dad-portrait img { width: 100%; height: 100%; display: block; object-fit: cover; object-position: center 28%; }
 .dad-portrait figcaption { position: absolute; right: 0; bottom: 0; margin: 0; padding: 6px 9px; color: var(--charcoal); background: var(--orange); border-top: 2px solid var(--charcoal); border-left: 2px solid var(--charcoal); font-family: var(--font-display), sans-serif; font-size: 11px; font-weight: 900; letter-spacing: .07em; line-height: 1; }
-.sergey-card h3 { margin: 0 0 20px; }
+.sergey-card h3, .vlad-card h3 { margin: 0 0 20px; }
 .red-card { color: var(--white); background: var(--red); transform: rotate(-1.2deg); }
 .green-card { color: var(--white); background: var(--green); transform: rotate(1deg); }
 .title-card { background: var(--orange); }
