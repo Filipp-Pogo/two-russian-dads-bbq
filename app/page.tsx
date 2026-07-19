@@ -45,19 +45,34 @@ const experiences = [
     name: "BACKYARD TAKEOVER",
     size: "20–40 GUESTS",
     copy: "The full mangal setup for birthdays, graduations, reunions, and very serious backyard gatherings.",
+    perGuest: 125,
+    minimum: 2750,
   },
   {
     number: "02",
     name: "BIG FAMILY TABLE",
     size: "40–80 GUESTS",
     copy: "A bigger fire, an abundant shared table, and enough lavash to keep every relative strategically occupied.",
+    perGuest: 118,
+    minimum: 5000,
   },
   {
     number: "03",
     name: "CORPORATE DEBRIEF",
     size: "50+ GUESTS",
     copy: "Team gathering, minus the slides. Live-fire cooking, generous service, and no quarterly review required.",
+    perGuest: 110,
+    minimum: 6000,
   },
+];
+
+const priceAllocation = [
+  ["25%", "Ingredients, generous portions & food waste"],
+  ["35%", "Prep, live-fire cooking, service & cleanup labor"],
+  ["12%", "Charcoal, transport, cleaning & service supplies"],
+  ["8%", "Permits, insurance, commissary & equipment"],
+  ["4%", "Payment processing, B&O tax & administration"],
+  ["16%", "Contingency, reinvestment & operating profit"],
 ];
 
 const faqs = [
@@ -90,7 +105,24 @@ const faqs = [
 export default function Home() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [selectedDishes, setSelectedDishes] = useState<string[]>([]);
-  const [selectedExperience, setSelectedExperience] = useState("");
+  const [selectedExperience, setSelectedExperience] = useState("BACKYARD TAKEOVER");
+  const [guestCount, setGuestCount] = useState(30);
+  const [travelZone, setTravelZone] = useState("included");
+  const [lambUpgrade, setLambUpgrade] = useState(false);
+  const [thirdProtein, setThirdProtein] = useState(false);
+  const [serviceware, setServiceware] = useState(false);
+  const [extraHours, setExtraHours] = useState(0);
+
+  const selectedPlan = experiences.find((item) => item.name === selectedExperience) ?? experiences[0];
+  const billableGuests = Math.max(20, guestCount || 20);
+  const baseEventPrice = Math.max(selectedPlan.minimum, billableGuests * selectedPlan.perGuest);
+  const lambUpgradePrice = lambUpgrade ? billableGuests * 10 : 0;
+  const thirdProteinPrice = thirdProtein ? billableGuests * 14 : 0;
+  const servicewarePrice = serviceware ? billableGuests * 4 : 0;
+  const extraHoursPrice = extraHours * 250;
+  const travelPrice = travelZone === "extended" ? 275 : 0;
+  const estimatedSubtotal = baseEventPrice + lambUpgradePrice + thirdProteinPrice + servicewarePrice + extraHoursPrice + travelPrice;
+  const currency = new Intl.NumberFormat("en-US", { style: "currency", currency: "USD", maximumFractionDigits: 0 });
 
   function toggleDish(item: string) {
     setSelectedDishes((current) =>
@@ -117,6 +149,9 @@ export default function Home() {
       `Guest count: ${data.get("guests")}`,
       `Event type: ${data.get("type")}`,
       `Preferred experience: ${data.get("experience") || "Not selected"}`,
+      `Working estimate: ${data.get("estimate") || "Not calculated"}`,
+      `Estimate travel zone: ${data.get("travelZone") || "Not selected"}`,
+      `Estimate add-ons: ${data.get("estimateAddOns") || "None"}`,
       `Menu shortlist: ${data.get("menuShortlist") || "Not selected"}`,
       `Dietary restrictions: ${data.get("dietary")}`,
       `Venue details: ${data.get("venue")}`,
@@ -387,11 +422,12 @@ export default function Home() {
                 </div>
                 <div className="experience-actions">
                   <div className="proposal">
-                    <span>PRICING</span>
-                    <b>CUSTOM<br />PROPOSAL</b>
+                    <span>STARTING AT</span>
+                    <b>{currency.format(item.perGuest)}<small>/ GUEST</small></b>
+                    <em>{currency.format(item.minimum)} MINIMUM</em>
                   </div>
-                  <button type="button" className="experience-select" aria-pressed={selected} onClick={() => setSelectedExperience(selected ? "" : item.name)}>
-                    {selected ? "SELECTED ✓" : "CHOOSE THIS"}
+                  <button type="button" className="experience-select" aria-pressed={selected} onClick={() => setSelectedExperience(item.name)}>
+                    {selected ? "SELECTED ✓" : "PRICE THIS"}
                   </button>
                 </div>
               </article>
@@ -399,10 +435,71 @@ export default function Home() {
             })}
           </div>
 
-          <div className={selectedExperience ? "experience-choice active" : "experience-choice"} aria-live="polite">
-            <p><span>YOUR FORMAT</span><b>{selectedExperience || "Choose an experience above. No committee meeting required."}</b></p>
-            <button type="button" onClick={goToBooking} disabled={!selectedExperience}>Continue to Booking <span aria-hidden="true">→</span></button>
-          </div>
+          <section className="pricing-planner" aria-labelledby="pricing-title">
+            <div className="pricing-controls">
+              <p className="section-label light">BUILD A WORKING ESTIMATE</p>
+              <h3 id="pricing-title">THE DAD<br /><em>CALCULATOR.</em></h3>
+              <p className="pricing-intro">Launch pricing for a full live-fire experience—not drop-off trays. Adjust the event below; your choices follow you into the inquiry.</p>
+
+              <div className="pricing-fields">
+                <label>
+                  Guest count
+                  <input type="number" min="20" step="1" value={guestCount} onChange={(event) => setGuestCount(Math.max(20, Number(event.target.value)))} />
+                </label>
+                <label>
+                  Experience
+                  <select value={selectedExperience} onChange={(event) => setSelectedExperience(event.target.value)}>
+                    {experiences.map((item) => <option key={item.name}>{item.name}</option>)}
+                  </select>
+                </label>
+                <label className="wide">
+                  Travel from Seattle
+                  <select value={travelZone} onChange={(event) => setTravelZone(event.target.value)}>
+                    <option value="included">Up to 25 driving miles · included</option>
+                    <option value="extended">26–50 driving miles · $275</option>
+                    <option value="custom">Beyond 50 miles / ferry · custom</option>
+                  </select>
+                </label>
+              </div>
+
+              <fieldset className="pricing-addons">
+                <legend>Optional upgrades</legend>
+                <label><input type="checkbox" checked={lambUpgrade} onChange={(event) => setLambUpgrade(event.target.checked)} /><span><b>Lamb as a featured protein</b><small>+$10 per guest</small></span></label>
+                <label><input type="checkbox" checked={thirdProtein} onChange={(event) => setThirdProtein(event.target.checked)} /><span><b>Add a third protein</b><small>+$14 per guest</small></span></label>
+                <label><input type="checkbox" checked={serviceware} onChange={(event) => setServiceware(event.target.checked)} /><span><b>Compostable serviceware</b><small>+$4 per guest</small></span></label>
+                <label className="extra-hours"><span><b>Extra service hours</b><small>+$250 each</small></span><input aria-label="Extra service hours" type="number" min="0" max="4" value={extraHours} onChange={(event) => setExtraHours(Math.min(4, Math.max(0, Number(event.target.value))))} /></label>
+              </fieldset>
+            </div>
+
+            <div className="pricing-result" aria-live="polite">
+              <span className="estimate-kicker">WORKING EVENT ESTIMATE</span>
+              <h4>{currency.format(estimatedSubtotal)}</h4>
+              <p className="effective-rate">About {currency.format(estimatedSubtotal / billableGuests)} per guest · before sales tax</p>
+              <dl>
+                <div><dt>{selectedPlan.name}</dt><dd>{currency.format(baseEventPrice)}</dd></div>
+                {lambUpgrade && <div><dt>Lamb upgrade</dt><dd>{currency.format(lambUpgradePrice)}</dd></div>}
+                {thirdProtein && <div><dt>Third protein</dt><dd>{currency.format(thirdProteinPrice)}</dd></div>}
+                {serviceware && <div><dt>Compostable serviceware</dt><dd>{currency.format(servicewarePrice)}</dd></div>}
+                {extraHours > 0 && <div><dt>{extraHours} extra service hour{extraHours === 1 ? "" : "s"}</dt><dd>{currency.format(extraHoursPrice)}</dd></div>}
+                {travelZone === "extended" && <div><dt>Extended travel</dt><dd>{currency.format(travelPrice)}</dd></div>}
+                {travelZone === "custom" && <div><dt>Travel / ferry</dt><dd>TO QUOTE</dd></div>}
+              </dl>
+              <div className="included-list">
+                <b>THE BASE EVENT INCLUDES</b>
+                <p>Two proteins · full mangal table · standard nonalcoholic drinks · Vlad &amp; Sergey · size-appropriate service crew · up to four on-site hours · setup &amp; cleanup · charcoal &amp; equipment.</p>
+              </div>
+              <button type="button" className="button estimate-button" onClick={goToBooking}>USE THIS ESTIMATE <span aria-hidden="true">→</span></button>
+              <p className="estimate-legal">Sales tax is added at the rate for the event location. No automatic gratuity. Rentals, difficult access, parking, permits unique to the venue, and ferry costs are quoted separately. Final price requires a written proposal.</p>
+            </div>
+
+            <details className="pricing-method">
+              <summary>WHAT IS BUILT INTO THE PRICE? <span>SHOW THE MATH +</span></summary>
+              <div className="allocation-grid">
+                {priceAllocation.map(([amount, label]) => <div key={label}><b>{amount}</b><span>{label}</span></div>)}
+              </div>
+              <p>This is the target allocation for every $100 of pre-tax catering revenue. Actual ingredient mix and crew needs vary by event; the minimums protect small events from being priced below the real prep, transport, and setup cost.</p>
+            </details>
+          </section>
 
           <div className="expectations" aria-labelledby="expectations-title">
             <div className="expectations-heading">
@@ -438,13 +535,13 @@ export default function Home() {
               </article>
               <article>
                 <span>06</span>
-                <h4>CUSTOM PROPOSAL</h4>
-                <p>Guest count, proteins, service time, travel, rentals, and venue access shape the final quote.</p>
+                <h4>PRICE, THEN PROPOSAL</h4>
+                <p>Use the live estimate above. Venue access, final menu, tax, rentals, and unusual travel are confirmed in writing.</p>
               </article>
             </div>
             <div className="expectations-note">
               <b>WHAT IS INCLUDED?</b>
-              <p>Live-fire setup, cooking, the agreed menu, service plan, and an appropriately serious amount of food. Alcohol is never sold or provided.</p>
+              <p>Two proteins, the full table, standard nonalcoholic drinks, live-fire setup, cooking, service, and cleanup. Alcohol is never sold or provided.</p>
             </div>
           </div>
 
@@ -467,7 +564,7 @@ export default function Home() {
             <p>Tell us your date, city, and guest count. We’ll build a custom mangal menu and an appropriately dramatic arrival plan.</p>
             <ul className="booking-basics" aria-label="Booking basics">
               <li><b>20 guest minimum</b><span>Designed for full gatherings, not drop-off orders.</span></li>
-              <li><b>Custom proposal</b><span>Built around menu, travel, timing, and venue access.</span></li>
+              <li><b>From $110–$125</b><span>Per guest, with event minimums. Tax and special venue costs are additional.</span></li>
               <li><b>Outdoor fire plan</b><span>Charcoal approval and a safe cooking area are required.</span></li>
             </ul>
             <div className="booking-bomond-note">
@@ -484,6 +581,9 @@ export default function Home() {
           <form className="booking-form" onSubmit={createEmailInquiry}>
             <input type="hidden" name="experience" value={selectedExperience} />
             <input type="hidden" name="menuShortlist" value={selectedDishes.join(", ")} />
+            <input type="hidden" name="estimate" value={`${currency.format(estimatedSubtotal)} pre-tax for ${billableGuests} guests`} />
+            <input type="hidden" name="travelZone" value={travelZone === "included" ? "Up to 25 miles" : travelZone === "extended" ? "26–50 miles" : "Beyond 50 miles / ferry"} />
+            <input type="hidden" name="estimateAddOns" value={[lambUpgrade && "Lamb featured protein", thirdProtein && "Third protein", serviceware && "Compostable serviceware", extraHours > 0 && `${extraHours} extra service hour(s)`].filter(Boolean).join(", ")} />
             <div className="form-header">
               <h3>START THE INQUIRY</h3>
               <p>All fields marked * are required.</p>
@@ -492,6 +592,7 @@ export default function Home() {
               <div className="form-selection-summary" aria-live="polite">
                 <span>YOUR WORKING BRIEF</span>
                 {selectedExperience && <p><b>Experience:</b> {selectedExperience}</p>}
+                <p><b>Working estimate:</b> {currency.format(estimatedSubtotal)} before tax · {billableGuests} guests</p>
                 {selectedDishes.length > 0 && <p><b>Menu shortlist:</b> {selectedDishes.join(" · ")}</p>}
                 <small>These preferences will be included in your email inquiry and confirmed in the custom proposal.</small>
               </div>
@@ -502,7 +603,7 @@ export default function Home() {
               <label>Phone<input name="phone" type="tel" autoComplete="tel" /></label>
               <label>Event date *<input name="date" type="date" required /></label>
               <label>Event city *<input name="city" type="text" autoComplete="address-level2" required /></label>
-              <label>Guest count *<input name="guests" type="number" min="20" inputMode="numeric" placeholder="20 minimum" required /></label>
+              <label>Guest count *<input name="guests" type="number" min="20" inputMode="numeric" value={guestCount} onChange={(event) => setGuestCount(Math.max(20, Number(event.target.value)))} required /></label>
               <label className="full">Event type *
                 <select name="type" defaultValue="" required>
                   <option value="" disabled>Select an event type</option>
