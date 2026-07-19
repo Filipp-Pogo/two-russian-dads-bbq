@@ -294,6 +294,45 @@ export default function Home() {
           </figure>
         </section>
 
+        <section className="dad-audio" aria-labelledby="dad-audio-title">
+          <div className="dad-audio-heading">
+            <p className="section-label light">A MESSAGE FROM MANAGEMENT <span>00:36</span></p>
+            <h2 id="dad-audio-title">HEAR THE<br /><em>DAD PITCH.</em></h2>
+            <p>
+              A warm, lightly accented briefing on live fire, Armenian-rooted barbecue, generous hospitality, and mandatory portion oversight.
+            </p>
+          </div>
+          <div className="dad-audio-player">
+            <div className="audio-status">
+              <span aria-hidden="true">▶</span>
+              <div>
+                <b>THE COMPLETE DAD EXPERIENCE</b>
+                <small>AI-GENERATED VOICE PERFORMANCE · NOT VLAD OR SERGEY’S REAL VOICE</small>
+              </div>
+            </div>
+            <audio controls preload="metadata" aria-label="Play the Two Russian Dads barbecue sales pitch">
+              <source src="/two-dads-pitch.mp3" type="audio/mpeg" />
+              Your browser does not support embedded audio. <a href="/two-dads-pitch.mp3">Open the audio pitch.</a>
+            </audio>
+            <details className="audio-transcript">
+              <summary>READ THE TRANSCRIPT <span aria-hidden="true">+</span></summary>
+              <p>
+                Hello, Seattle. Vlad and Sergey here—two former corporate professionals, now Chief Barbecue Officers.
+              </p>
+              <p>
+                We bring a real charcoal mangal to your backyard, cook Armenian-rooted khorovats and shashlik over live fire, and build the kind of generous table where nobody leaves hungry.
+              </p>
+              <p>
+                You get smoke, lavash, herbs, pickles, stories, and two dads conducting very serious portion audits.
+              </p>
+              <p>
+                This is not drop-off catering. This is the complete Two Russian Dads experience. Book Two Russian Dads BBQ. Come hungry. This is not a suggestion.
+              </p>
+            </details>
+            <a className="button dad-audio-button" href="#book">BOOK AFTER THE BRIEFING <span aria-hidden="true">→</span></a>
+          </div>
+        </section>
+
         <section className="section story" id="story">
           <div className="section-heading story-heading">
             <p className="section-label">THE ORIGIN STORY <span>01</span></p>
