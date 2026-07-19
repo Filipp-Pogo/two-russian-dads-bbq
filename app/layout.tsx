@@ -37,7 +37,7 @@ export async function generateMetadata(): Promise<Metadata> {
     applicationName: "Two Russian Dads BBQ",
     openGraph: {
       title: "Two Russian Dads BBQ — Laid Off. Fired Up.",
-      description: "Armenian fire, Russian hospitality, and a seriously full table—live in your Greater Seattle backyard.",
+      description: "Armenian-rooted live-fire barbecue, family-table hospitality, and a seriously full table in your Greater Seattle backyard.",
       type: "website",
       locale: "en_US",
       url: baseUrl,

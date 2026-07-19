@@ -255,6 +255,14 @@ h1 em, h2 em { color: var(--red); font-style: normal; }
 .culture-note h3 { margin: 0 0 20px; font-size: clamp(40px, 4vw, 68px); line-height: .85; }
 .culture-note p:last-child { max-width: 850px; margin: 0; font-size: 18px; }
 
+.identity-note { grid-column: 1 / -1; display: grid; grid-template-columns: .85fr 1.15fr; gap: clamp(30px, 6vw, 90px); padding: clamp(32px, 5vw, 70px); color: var(--white); background: var(--green); border: 3px solid var(--charcoal); box-shadow: 9px 9px 0 var(--charcoal); }
+.identity-note .section-label { color: var(--orange); }
+.identity-note h3 { margin: 0; font-size: clamp(48px, 5.5vw, 86px); font-weight: 900; letter-spacing: -.045em; line-height: .8; }
+.identity-note h3 em { color: var(--orange); font-style: normal; }
+.identity-copy { align-self: end; padding-left: 28px; border-left: 5px solid var(--orange); }
+.identity-copy p { max-width: 780px; margin-bottom: 18px; font-size: 18px; }
+.identity-copy p:last-child { margin-bottom: 0; color: rgba(255, 248, 233, .78); }
+
 .feast { color: var(--white); background: var(--green); }
 .feast-heading { display: grid; grid-template-columns: 1.4fr .6fr; gap: 24px 80px; align-items: end; margin-bottom: 65px; }
 .feast-heading .section-label { grid-column: 1 / -1; }
@@ -387,7 +395,8 @@ footer { color: var(--white); background: var(--charcoal); }
   .dad-grid, .menu-grid { grid-template-columns: 1fr; }
   .dad-card { min-height: 380px; }
   .red-card, .green-card { transform: none; }
-  .culture-note { grid-template-columns: 1fr; }
+  .culture-note, .identity-note { grid-template-columns: 1fr; }
+  .identity-copy { padding: 24px 0 0; border-top: 5px solid var(--orange); border-left: 0; }
   .feast-heading .section-label { grid-column: auto; }
   .feast-heading { align-items: start; }
   .menu-card { min-height: auto; }
@@ -431,6 +440,8 @@ footer { color: var(--white); background: var(--charcoal); }
   .title-card h3 { font-size: 49px; }
   .culture-note { padding: 26px 22px; gap: 15px; }
   .culture-note::after { display: none; }
+  .identity-note { padding: 28px 22px; gap: 26px; box-shadow: 6px 6px 0 var(--charcoal); }
+  .identity-copy p { font-size: 16px; }
   .feast-heading { margin-bottom: 45px; }
   .menu-title h3 { font-size: 28px; }
   .menu-card li { font-size: 16px; }

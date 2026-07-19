@@ -78,6 +78,10 @@ const faqs = [
     a: "No. Two Russian Dads BBQ does not sell, serve, or provide alcohol. Any client-supplied alcohol is subject to venue rules and applicable law.",
   },
   {
+    q: "What does “Russian” mean in the name?",
+    a: "It describes Vlad and Sergey’s personal family background—not a government, political ideology, or endorsement of Russia’s war against Ukraine. The business welcomes Ukrainian, Russian, Armenian, Azerbaijani, and all other Greater Seattle neighbors.",
+  },
+  {
     q: "Are these real photos of Vlad and Sergey?",
     a: "Not yet. This initial concept website uses temporary editorial stand-ins until professional photographs of Vlad and Sergey are available.",
   },
@@ -145,7 +149,7 @@ export default function Home() {
             <p className="eyebrow">GREATER SEATTLE <span>·</span> BACKYARD TO YOUR BACKYARD</p>
             <h1>LAID OFF.<br /><em>FIRED UP.</em></h1>
             <p className="hero-intro">
-              Vlad Pogostkin and Sergey Shkrebtan bring the mangal, the smoke, and an Armenian-rooted barbecue table served with Russian table generosity.
+              Vlad Pogostkin and Sergey Shkrebtan bring the mangal, the smoke, and an Armenian-rooted barbecue table shaped by family tradition and generous hospitality.
             </p>
             <div className="button-row">
               <a className="button button-primary" href="#book">Book the Dads <span aria-hidden="true">→</span></a>
@@ -217,9 +221,24 @@ export default function Home() {
           <div className="culture-note">
             <p className="section-label">THE TABLE HAS A FOUNDATION</p>
             <div>
-              <h3>ARMENIAN FIRE.<br />A WIDER FAMILY STORY.</h3>
+              <h3>ARMENIAN FIRE.<br />DISTINCT FAMILY STORIES.</h3>
               <p>
-                Armenian khorovats is the culinary foundation: meat and vegetables cooked over a traditional charcoal mangal and served hot, generously, and together. The atmosphere draws respectfully from Armenian, Azerbaijani, and Russian homes—Russian table generosity and the broader Caucasus experience shape the hospitality, stories, herbs, pickles, sauces, and instinct to keep the table full.
+                Armenian khorovats is the culinary foundation: meat and vegetables cooked over a traditional charcoal mangal and served hot, generously, and together. The hospitality also reflects family experience in Azerbaijani and Russian homes. We name those influences separately and respectfully; shared regional ingredients do not make distinct cultures interchangeable.
+              </p>
+            </div>
+          </div>
+
+          <div className="identity-note">
+            <div>
+              <p className="section-label light">A NOTE ON THE NAME</p>
+              <h3>PEOPLE FIRST.<br /><em>POLITICS OFF THE MENU.</em></h3>
+            </div>
+            <div className="identity-copy">
+              <p>
+                “Two Russian Dads” describes Vlad and Sergey’s personal family background. It is not an endorsement of the Russian government, its war against Ukraine, or any political ideology. Our table welcomes Ukrainian, Russian, Armenian, Azerbaijani, and every other Greater Seattle neighbor.
+              </p>
+              <p>
+                The parody stays where it belongs: layoffs, meetings, spreadsheets, middle-aged reinvention, and two dads taking barbecue extremely seriously. War, displacement, nationality, and ethnicity are never the punchline.
               </p>
             </div>
           </div>
@@ -375,7 +394,7 @@ export default function Home() {
             </div>
             <button className="button form-button" type="submit">CREATE EMAIL INQUIRY <span aria-hidden="true">→</span></button>
             <p className="form-disclaimer">
-              This form opens a draft in your email app; it does not send automatically. <strong>Private concept version:</strong> bookings@tworussiandadsbbq.com is a temporary booking address pending final confirmation.
+              This form opens a draft in your email app; it does not send automatically. <strong>Booking note:</strong> bookings@tworussiandadsbbq.com is a temporary address pending final confirmation.
             </p>
           </form>
         </section>
@@ -399,13 +418,13 @@ export default function Home() {
       <footer>
         <div className="footer-top">
           <div className="footer-brand"><span>TWO RUSSIAN DADS</span><b>BBQ</b></div>
-          <p>Armenian fire <i>·</i> Russian hospitality <i>·</i> Greater Seattle</p>
+          <p>Armenian fire <i>·</i> Family-table hospitality <i>·</i> Greater Seattle</p>
           <a href="#top">BACK TO TOP ↑</a>
         </div>
         <div className="footer-bottom">
           <p>Two Russian Dads BBQ does not sell, serve, or provide alcohol. Any client-supplied alcohol is subject to venue rules and applicable law.</p>
           <p>Two Russian Dads BBQ is not sponsored by, endorsed by, or affiliated with Adidas or any other tracksuit brand. All temporary imagery uses generic, logo-free retro tracksuits.</p>
-          <p>PRIVATE CONCEPT · © {new Date().getFullYear()} TWO RUSSIAN DADS BBQ</p>
+          <p>FAMILY FOOD · NO GOVERNMENT OR POLITICAL AFFILIATION · © {new Date().getFullYear()} TWO RUSSIAN DADS BBQ</p>
         </div>
       </footer>
     </main>
