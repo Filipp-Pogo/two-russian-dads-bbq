@@ -296,10 +296,10 @@ export default function Home() {
 
         <section className="dad-audio" aria-labelledby="dad-audio-title">
           <div className="dad-audio-heading">
-            <p className="section-label light">A MESSAGE FROM MANAGEMENT <span>00:36</span></p>
+            <p className="section-label light">A MESSAGE FROM MANAGEMENT <span>00:37</span></p>
             <h2 id="dad-audio-title">HEAR THE<br /><em>DAD PITCH.</em></h2>
             <p>
-              A warm, lightly accented briefing on live fire, Armenian-rooted barbecue, generous hospitality, and mandatory portion oversight.
+              A warm, thickly Russian-accented briefing on live fire, Armenian-rooted barbecue, generous hospitality, and mandatory portion oversight.
             </p>
           </div>
           <div className="dad-audio-player">
@@ -317,7 +317,7 @@ export default function Home() {
             <details className="audio-transcript">
               <summary>READ THE TRANSCRIPT <span aria-hidden="true">+</span></summary>
               <p>
-                Hello, Seattle. Vlad and Sergey here—two former corporate professionals, now Chief Barbecue Officers.
+                Zdravstvuyte, Seattle. Vlad and Sergey here—two former corporate professionals, now Chief Barbecue Officers.
               </p>
               <p>
                 We bring a real charcoal mangal to your backyard, cook Armenian-rooted khorovats and shashlik over live fire, and build the kind of generous table where nobody leaves hungry.
