@@ -312,7 +312,7 @@ export default function Home() {
               <span aria-hidden="true">▶</span>
               <div>
                 <b>THE COMPLETE DAD EXPERIENCE</b>
-                <small>AI-GENERATED VOICE PERFORMANCE · NOT VLAD OR SERGEY’S REAL VOICE</small>
+                <small>AI-GENERATED VOICE · ORIGINAL FOLK-INSPIRED MUSIC · NOT VLAD OR SERGEY’S REAL VOICE</small>
               </div>
             </div>
             <audio controls preload="metadata" aria-label="Play the Two Russian Dads barbecue sales pitch">
