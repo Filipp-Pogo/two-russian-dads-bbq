@@ -83,7 +83,7 @@ const faqs = [
   },
   {
     q: "Are these real photos of Vlad and Sergey?",
-    a: "Not yet. This initial concept website uses temporary editorial stand-ins until professional photographs of Vlad and Sergey are available.",
+    a: "Sergey’s individual portrait uses his real face from a supplied photograph with a playful editorial treatment. The two-dad hero image remains a temporary stand-in until a professional shoot with Vlad and Sergey is available.",
   },
 ];
 
@@ -204,8 +204,18 @@ export default function Home() {
               <p>Live-fire operations.<br />Smoke strategy.<br />Lavash quality control.</p>
               <span className="status">STATUS: FIRED UP</span>
             </article>
-            <article className="dad-card green-card">
+            <article className="dad-card green-card sergey-card">
               <span className="card-index">02</span>
+              <figure className="dad-portrait">
+                <img
+                  src="/sergey-editorial.webp"
+                  alt="Editorial portrait of Sergey Shkrebtan in a logo-free black retro tracksuit holding barbecue tongs"
+                  width={960}
+                  height={960}
+                  loading="lazy"
+                />
+                <figcaption>REAL SERGEY · EDITORIAL TREATMENT</figcaption>
+              </figure>
               <h3>SERGEY<br />SHKREBTAN</h3>
               <p>Table logistics.<br />Portion auditing.<br />Freezer temperature oversight.</p>
               <div className="sergey-brand-chip">
